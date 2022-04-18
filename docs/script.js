@@ -13016,6 +13016,23 @@ function initialize() {
 }
 
 function update() {
+  let guess = "";
+  document.getElementById("answer").innerText = "";
+
+  //string up the gueses word
+  for (let c = 0; c < width; c++) {
+    let currTile = document.getElementById(row.toString + "-" + c.toString());
+    let letter = currTile.innerText;
+    guess += letter;
+  }
+
+  guess = guess.toLowerCase();
+  if (!guessList.includes(guess)) {
+    document.getElementById("answer").innerText = "Not in Word List";
+    return;
+  }
+
+  //start processing game
   let correct = 0;
   let letterCount = {}; //KENNY ->{K:1, E:1, N:2, Y:1}
 
